@@ -1,6 +1,6 @@
 {
   "name": "webflow-form-controller",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Kennedy Rose <kennedyianrose@gmail.com>",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "lerna run build --parallel --ignore sandbox",
     "start": "cd packages/generator && npm run start",
     "stop": "sudo killall -9 node",
-    "version": "lerna version",
+    "version": "lerna version --no-private",
     "test": "echo 'no test'"
   },
   "workspaces": [
