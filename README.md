@@ -1,4 +1,6 @@
-# Installation
+# Webflow Form Controller
+
+## Installation
 ```bash
 npm i --save @kennedyrose/webflow-form-controller
 ```
@@ -9,7 +11,7 @@ yarn add @kennedyrose/webflow-form-controller
 
 
 
-# Usage
+## Usage
 ```js
 import WebflowForm from '@kennedyrose/webflow-form-controller'
 
@@ -28,8 +30,8 @@ let form = new WebflowForm(`#contact-form`, async () => {
 
 `WebflowForm` takes 2 arguments. The first is either a DOM node or a query selector string for the form that you want to control. The second argument is a submit handler function. It returns an object that can be used to control the Webflow form with various methods.
 
-# Methods
-## `getValues`
+## Methods
+### `getValues`
 Returns an object of the form values. Keys are the `name` field of the inputs.
 
 ```js
@@ -37,7 +39,7 @@ let data = form.getValues()
 ```
 
 
-## `showSuccess`
+### `showSuccess`
 Shows the form success message.
 
 ```js
@@ -48,14 +50,14 @@ form.showSuccess()
 form.showSuccess(`Form submitted. <strong>Thank you!</strong>`)
 ```
 
-## `hideSuccess`
+### `hideSuccess`
 Hides the form success message.
 
 ```js
 form.hideSuccess()
 ```
 
-## `showError`
+### `showError`
 Shows the form error message.
 
 ```js
@@ -66,14 +68,14 @@ form.showError()
 form.showSuccess(`<strong>Uh oh!</strong> Something went wrong.`)
 ```
 
-## `hideError`
+### `hideError`
 Hides the form error message.
 
 ```js
 form.hideSuccess()
 ```
 
-## `scrollTo`
+### `scrollTo`
 Scrolls to the top of the form.
 
 ```js
@@ -84,14 +86,14 @@ form.scrollTo()
 form.scrollTo({ offset: -200 })
 ```
 
-## `reset`
+### `reset`
 Resets the form values to their default state.
 
 ```js
 form.reset()
 ```
 
-## `showWait`
+### `showWait`
 Show the "waiting" text in the submit button.
 
 ```js
@@ -102,35 +104,35 @@ form.showWait()
 form.showWait(`Waiting...`)
 ```
 
-## `hideWait`
+### `hideWait`
 Reset the waiting text back to the default submit button text.
 
 ```js
 form.hideWait()
 ```
 
-## `disable`
+### `disable`
 Disable all inputs and form submission for the form. It's a good idea to do this right after the form submits while you're processing the submission to prevent multiple submit handlers from running at the same time.
 
 ```js
 form.disable()
 ```
 
-## `enable`
+### `enable`
 Enables the form if it's been disabled.
 
 ```js
 form.enable()
 ```
 
-## `hideForm`
+### `hideForm`
 Hides the form. Success and error messages can still be shown. 
 
 ```js
 form.hideForm()
 ```
 
-## `showForm`
+### `showForm`
 Shows a form if it's been hidden.
 
 ```js
