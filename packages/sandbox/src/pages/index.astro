@@ -1,0 +1,33 @@
+---
+import cheerio from 'cheerio'
+
+// Proxy Webflow site in development
+let site = import.meta.env.WEBFLOW_URL || `https://portfolio-starter-template.webflow.io/`
+
+// Get full path to proxy
+if(site.endsWith(`/`)) site = site.slice(0, -1)
+let { path } = Astro.params
+if(!path) path = ``
+const proxyPath = `${site}/${path}`
+
+// Get HTML from Webflow
+const res = await fetch(proxyPath)
+const html = await res.text()
+
+// Split up HTMl and attributes
+const $ = cheerio.load(html)
+let htmlAttrs = $(`html`).attr()
+let bodyHtml = $(`body`).html()
+let bodyAttrs = $(`body`).attr()
+let headHtml = $(`head`).html()
+let headAttrs = $(`head`).attr()
+
+---
+
+<html {...htmlAttrs}>
+	<head {...headAttrs} set:html={headHtml}></head>
+	
+	<body {...bodyAttrs} set:html={bodyHtml}>
+		<script src='../script.js'></script>
+	</body>
+</html>
