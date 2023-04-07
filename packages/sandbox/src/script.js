@@ -1,6 +1,6 @@
 import WebflowForm from '@kennedyrose/webflow-form-controller'
 
-const form = new WebflowForm(`#wf-form-Email-Form`, async () => {
+new WebflowForm(`#wf-form-Email-Form`, async form => {
 	form.disable().showWait()
 
 

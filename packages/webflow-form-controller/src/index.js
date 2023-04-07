@@ -1,9 +1,13 @@
-
 export default class WebflowForm{
 	constructor(form, onSubmit){
 		if(typeof form === 'string'){
 			form = document.querySelector(form)
 		}
+		if(!form){
+			this.exists = false
+			return
+		}
+		this.exists = true
 		this.form = form
 		this.container = form.parentNode
 		this.container.classList.remove('w-form')
@@ -24,7 +28,7 @@ export default class WebflowForm{
 			...userOptions,
 		}
 		if(!options.el.getBoundingClientRect || !window.scrollTo){
-			return
+			return this
 		}
 		const target = options.el.getBoundingClientRect().top + window.pageYOffset + options.offset
 		window.scrollTo({
@@ -47,7 +51,7 @@ export default class WebflowForm{
 		return this
 	}
 	showWait(message){
-		if(this.isWaiting) return
+		if(this.isWaiting) return this
 		this.isWaiting = true
 		const waitIndicators = this.form.querySelectorAll('[data-wait]')
 		this.waitIndicators = []
@@ -59,7 +63,7 @@ export default class WebflowForm{
 		return this
 	}
 	hideWait(){
-		if(!this.isWaiting) return
+		if(!this.isWaiting) return this
 		this.isWaiting = false
 		for(let i = 0; i < this.waitIndicators.length; i++){
 			this.waitIndicators[i].value = this.waitIndicators[i].dataset.originalValue
@@ -67,7 +71,7 @@ export default class WebflowForm{
 		return this
 	}
 	disable(){
-		if(this.isDisabled) return
+		if(this.isDisabled) return this
 		this.isDisabled = true
 		const inputs = this.form.querySelectorAll('input, textarea, button')
 		this.disabledEls = []
@@ -80,7 +84,7 @@ export default class WebflowForm{
 		return this
 	}
 	enable(){
-		if(!this.isDisabled) return
+		if(!this.isDisabled) return this
 		this.isDisabled = false
 		for(let i = 0; i < this.disabledEls.length; i++){
 			this.disabledEls[i].disabled = false
