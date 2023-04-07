@@ -1,7 +1,7 @@
 {
   "name": "@kennedyrose/webflow-form-controller",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "main": "dist/webflow-form-controller.umd.js",
   "module": "dist/webflow-form-controller.es.js",
